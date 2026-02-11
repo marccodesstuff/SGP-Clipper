@@ -1,6 +1,6 @@
 # SGP Clipper
 
-> A Chrome extension that adds quick-copy buttons to [sgpbusiness.com](https://www.sgpbusiness.com) company pages — grab the entity name, UEN, and page URL in one click.
+> A browser extension for **Chrome** and **Firefox** that adds quick-copy buttons to [sgpbusiness.com](https://www.sgpbusiness.com) company pages — grab the entity name, UEN, and page URL in one click.
 
 ## Features
 
@@ -20,7 +20,7 @@ Copies the **URL** (as a clickable link), **entity name**, and **UEN** so that p
 
 ## Installation
 
-Since this extension is not published on the Chrome Web Store, it must be installed manually in **Developer Mode**.
+This extension is not published on any store — install it manually using the steps below.
 
 ### 1. Download the extension
 
@@ -30,39 +30,36 @@ Clone this repository or download it as a ZIP and extract it:
 git clone https://github.com/your-username/sgpb-copy-extension.git
 ```
 
-### 2. Open Chrome Extensions page
+### 2a. Chrome
 
-- Open Google Chrome
-- Type `chrome://extensions/` in the address bar and press Enter
-- Alternatively, go to **⋮ Menu → Extensions → Manage Extensions**
+1. Open `chrome://extensions/` (or **⋮ Menu → Extensions → Manage Extensions**)
+2. Toggle **Developer mode** ON (top-right corner)
+3. Click **Load unpacked** and select the extension folder
+4. The extension "SGPBusiness Copy" should appear in your extensions list
 
-### 3. Enable Developer Mode
+To update after pulling new changes, click the **↻ reload** button on the extension card.
 
-- In the top-right corner of the Extensions page, toggle **Developer mode** to **ON**
-- Three new buttons will appear: _Load unpacked_, _Pack extension_, and _Update_
+### 2b. Firefox
 
-### 4. Load the extension
+1. Open `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on…**
+3. Select the `manifest.json` file inside the extension folder
+4. The extension will be loaded for the current session (temporary add-ons are removed when Firefox closes)
 
-- Click **Load unpacked**
-- Navigate to the `sgpb-copy-extension` folder and select it
-- The extension "SGPBusiness Copy" should now appear in your extensions list
+> **Tip:** For permanent installation, package the extension as an `.xpi` file and install it via `about:addons`.
 
-### 5. Verify it works
+### 3. Verify it works
 
 - Navigate to any company page on sgpbusiness.com, e.g. `https://www.sgpbusiness.com/company/Daseti`
 - Two small buttons should appear next to the company name heading:
   - **📋 Clipboard icon** — copies name & UEN
   - **📊 Grid icon** — copies URL, name & UEN for Google Sheets
 
-### Updating the extension
-
-After pulling new changes or editing the code, go back to `chrome://extensions/` and click the **↻ reload** button on the extension card to pick up the latest version.
-
 ## Project Structure
 
 ```
 sgpb-copy-extension/
-├── manifest.json   # Chrome extension config (Manifest V3)
+├── manifest.json   # Extension config (Manifest V3, Chrome + Firefox)
 ├── content.js      # Content script — extracts data & injects buttons
 ├── styles.css      # Copy button styles & animations
 ├── reference/      # Reference HTML for development

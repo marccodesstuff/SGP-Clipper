@@ -2,7 +2,13 @@
     "manifest_version": 3,
     "name": "SGPBusiness Copy",
     "description": "Adds a copy button next to business legal names on sgpbusiness.com to quickly copy the name and UEN.",
-    "version": "1.0",
+    "version": "2.0",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "sgp-clipper@sgpbusiness",
+            "strict_min_version": "109.0"
+        }
+    },
     "action": {
         "default_popup": "popup.html",
         "default_title": "SGP Clipper Settings"

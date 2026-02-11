@@ -1,6 +1,9 @@
 (function () {
     "use strict";
 
+    // Cross-browser compatibility shim (Firefox uses `browser`, Chrome uses `chrome`)
+    const api = (typeof browser !== "undefined") ? browser : chrome;
+
     // ---------------------------------------------------------------------------
     // 1. Extract entity name & UEN from the page <title>
     //    Title format: "ENTITY_NAME (UEN) - Singapore Entity"
@@ -174,7 +177,7 @@
 
         // Retrieve saved system prompt from storage
         const stored = await new Promise(function (resolve) {
-            chrome.storage.local.get("systemPrompt", function (data) {
+            api.storage.local.get("systemPrompt", function (data) {
                 resolve(data.systemPrompt || "");
             });
         });
