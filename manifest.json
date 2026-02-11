@@ -7,7 +7,9 @@
         {
             "matches": [
                 "*://www.sgpbusiness.com/company/*",
-                "*://sgpbusiness.com/company/*"
+                "*://sgpbusiness.com/company/*",
+                "*://www.sgpbusiness.com/societies/*",
+                "*://sgpbusiness.com/societies/*"
             ],
             "js": [
                 "content.js"

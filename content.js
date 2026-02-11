@@ -23,10 +23,7 @@
     const heading = document.querySelector("h1");
     if (!heading) return;
 
-    // Make sure the heading's parent can position the button correctly
-    heading.style.display = "inline-flex";
-    heading.style.alignItems = "center";
-    heading.style.flexWrap = "wrap";
+
 
     // ---------------------------------------------------------------------------
     // 3. Create the copy button
@@ -144,8 +141,11 @@
     });
 
     // ---------------------------------------------------------------------------
-    // 6. Insert both buttons after the heading text
+    // 6. Insert both buttons below the heading
     // ---------------------------------------------------------------------------
-    heading.appendChild(btn);
-    heading.appendChild(sheetsBtn);
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "sgpb-copy-btns";
+    btnContainer.appendChild(btn);
+    btnContainer.appendChild(sheetsBtn);
+    heading.insertAdjacentElement("afterend", btnContainer);
 })();

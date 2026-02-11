@@ -2,6 +2,14 @@
    SGPBusiness Copy Button
    ========================================================================= */
 
+/* Button row below the heading */
+.sgpb-copy-btns {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
 .sgpb-copy-btn {
   display: inline-flex;
   align-items: center;
