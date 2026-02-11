@@ -27,7 +27,7 @@ Since this extension is not published on the Chrome Web Store, it must be instal
 Clone this repository or download it as a ZIP and extract it:
 
 ```bash
-git clone https://github.com/your-username/sgpb-copy-extension.git
+git clone https://github.com/marccodesstuff/sgpb-copy-extension.git
 ```
 
 ### 2. Open Chrome Extensions page
@@ -80,3 +80,4 @@ sgpb-copy-extension/
 ## License
 
 MIT
+
