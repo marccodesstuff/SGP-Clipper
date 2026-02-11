@@ -1,0 +1,86 @@
+/* =========================================================================
+   SGPBusiness Copy Button
+   ========================================================================= */
+
+.sgpb-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 8px;
+  padding: 4px 6px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background: #f8f9fa;
+  color: #495057;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.sgpb-copy-btn:hover {
+  background: #e2e6ea;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.sgpb-copy-btn:active {
+  background: #d6dadf;
+}
+
+/* "Copied!" tooltip */
+.sgpb-copy-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #28a745;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: sgpb-fade-in 0.15s ease;
+}
+
+/* Small arrow below tooltip */
+.sgpb-copy-btn[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #28a745;
+  pointer-events: none;
+  animation: sgpb-fade-in 0.15s ease;
+}
+
+/* Green flash on copy */
+.sgpb-copy-btn--copied {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+/* Green accent for the Sheets button */
+.sgpb-copy-btn--sheets:hover {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+@keyframes sgpb-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

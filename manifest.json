@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "SGPBusiness Copy",
+    "description": "Adds a copy button next to business legal names on sgpbusiness.com to quickly copy the name and UEN.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://www.sgpbusiness.com/company/*",
+                "*://sgpbusiness.com/company/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "clipboardWrite"
+    ]
+}
