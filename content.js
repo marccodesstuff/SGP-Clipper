@@ -6,7 +6,7 @@
     //    Title format: "ENTITY_NAME (UEN) - Singapore Entity"
     // ---------------------------------------------------------------------------
     const titleText = document.title || "";
-    const titleMatch = titleText.match(/^(.+?)\s*\(([^)]+)\)/);
+    const titleMatch = titleText.match(/^(.+)\s*\(([^)]+)\)/);
 
     if (!titleMatch) {
         // Not a recognised entity page – do nothing.
