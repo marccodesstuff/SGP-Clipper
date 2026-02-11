@@ -81,6 +81,38 @@
   color: #28a745;
 }
 
+/* Prompt row: button + link textbox */
+.sgpb-prompt-row {
+  align-items: center;
+}
+
+.sgpb-copy-btn--prompt:hover {
+  border-color: #6f42c1;
+  color: #6f42c1;
+}
+
+.sgpb-link-input {
+  flex: 1;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #212529;
+  background: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sgpb-link-input:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 0 2px rgba(111, 66, 193, 0.15);
+}
+
+.sgpb-link-input::placeholder {
+  color: #adb5bd;
+}
+
 @keyframes sgpb-fade-in {
   from {
     opacity: 0;

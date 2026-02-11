@@ -141,11 +141,85 @@
     });
 
     // ---------------------------------------------------------------------------
-    // 6. Insert both buttons below the heading
+    // 6. Create the "Copy with Prompt" button + link textbox
+    // ---------------------------------------------------------------------------
+    const promptRow = document.createElement("div");
+    promptRow.className = "sgpb-copy-btns sgpb-prompt-row";
+
+    const promptBtn = document.createElement("button");
+    promptBtn.className = "sgpb-copy-btn sgpb-copy-btn--prompt";
+    promptBtn.title = "Copy system prompt + entity info + links";
+    promptBtn.setAttribute("aria-label", "Copy with system prompt and links");
+
+    // Document/prompt SVG icon
+    promptBtn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>`;
+
+    const linkInput = document.createElement("input");
+    linkInput.type = "text";
+    linkInput.className = "sgpb-link-input";
+    linkInput.placeholder = "Paste link/s here…";
+
+    promptBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Retrieve saved system prompt from storage
+        const stored = await new Promise(function (resolve) {
+            chrome.storage.local.get("systemPrompt", function (data) {
+                resolve(data.systemPrompt || "");
+            });
+        });
+
+        const links = linkInput.value.trim();
+
+        // Build the combined text
+        let copyText = stored + "\n\n" + entityName + "\n" + uen;
+        if (links) {
+            copyText += "\n" + links;
+        }
+
+        try {
+            await navigator.clipboard.writeText(copyText);
+        } catch (_err) {
+            const ta = document.createElement("textarea");
+            ta.value = copyText;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+        }
+
+        // Visual feedback
+        promptBtn.classList.add("sgpb-copy-btn--copied");
+        promptBtn.setAttribute("data-tooltip", "Copied!");
+
+        setTimeout(function () {
+            promptBtn.classList.remove("sgpb-copy-btn--copied");
+            promptBtn.removeAttribute("data-tooltip");
+        }, 1500);
+    });
+
+    promptRow.appendChild(promptBtn);
+    promptRow.appendChild(linkInput);
+
+    // ---------------------------------------------------------------------------
+    // 7. Insert all button rows below the heading
     // ---------------------------------------------------------------------------
     const btnContainer = document.createElement("div");
     btnContainer.className = "sgpb-copy-btns";
     btnContainer.appendChild(btn);
     btnContainer.appendChild(sheetsBtn);
+    heading.insertAdjacentElement("afterend", promptRow);
     heading.insertAdjacentElement("afterend", btnContainer);
 })();
